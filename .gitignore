@@ -1,0 +1,36 @@
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+.venv/
+venv/
+
+# Python/cache output
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# OS/editor noise
+.DS_Store
+.idea/
+.vscode/
+
+# Runtime/generated app data
+data/uploads/*
+data/repos/*
+data/reports/*
+data/chroma/*
+data/logs/*
+!data/uploads/.gitkeep
+!data/repos/.gitkeep
+!data/reports/.gitkeep
+!data/chroma/.gitkeep
+!data/logs/.gitkeep
+
+# Generated demo repositories are reproducible with scripts/create_sample_repo.py
+sample_repos/*
+!sample_repos/.gitkeep

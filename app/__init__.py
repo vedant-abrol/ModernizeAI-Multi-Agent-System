@@ -1,0 +1,2 @@
+"""ModernizeAI application package."""
+

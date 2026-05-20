@@ -1,0 +1,12 @@
+services:
+  modernizeai:
+    build: .
+    container_name: modernizeai
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+      - ./sample_repos:/app/sample_repos
+    restart: unless-stopped

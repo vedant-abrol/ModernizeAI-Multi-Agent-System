@@ -1,0 +1,14 @@
+fastapi
+uvicorn[standard]
+streamlit
+boto3
+langgraph
+langchain
+chromadb
+pydantic
+python-multipart
+python-dotenv
+requests
+GitPython
+python-docx
+pytest
