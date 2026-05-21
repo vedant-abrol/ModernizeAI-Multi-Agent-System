@@ -12,46 +12,33 @@ ModernizeAI performs static analysis only. It does not execute uploaded code, in
 
 ## Architecture
 
-```text
-User
- |
- v
-Streamlit UI
- |
- v
-FastAPI Backend
- |
- v
-Safe ZIP / GitHub Ingestion
- |
- v
-Repo Scanner Agent -> ChromaDB repo chunk index
- |
- v
-Architecture Agent
- |
- v
-Dependency Risk Agent
- |
- v
-Security Agent
- |
- v
-Test Strategy Agent
- |
- v
-Modernization Planner Agent
- |
- v
-Critic Agent
- |
- v
-Report Agent -> Markdown report
+```mermaid
+flowchart TD
+    User --> UI[Streamlit UI]
+    UI --> API[FastAPI Backend]
+    API --> Ingestion[Safe ZIP / GitHub Ingestion]
+    Ingestion --> Scanner[Repo Scanner Agent]
+    Scanner --> Index[ChromaDB repo chunk index]
+    Scanner --> Supervisor[Supervisor Agent]
+
+    Supervisor <--> Architecture[Architecture Agent]
+    Supervisor <--> Dependency[Dependency Risk Agent]
+    Supervisor <--> Security[Security Agent]
+    Supervisor <--> TestStrategy[Test Strategy Agent]
+    Supervisor <--> Modernization[Modernization Planner Agent]
+    Supervisor <--> Critic[Critic Agent]
+
+    Critic -. blocked claims: one revision pass .-> Supervisor
+    Supervisor --> Report[Report Agent]
+    Report --> Markdown[Markdown report]
 ```
+
+The graph is dynamic: after repo scanning, the Supervisor selects, skips, or revisits specialist agents based on repository evidence and Critic feedback.
 
 ## Agents
 
 - Repo Scanner Agent: deterministic repository facts, framework detection, file classification, API inventory, and vector indexing.
+- Supervisor Agent: dynamically routes specialist agents, prioritizes risk signals, skips irrelevant reviews, and sends blocked claims back for one evidence-backed revision pass.
 - Architecture Agent: summarizes layers, API entry points, data access, and integrations from evidence.
 - Dependency Risk Agent: parses Maven, Gradle, and npm dependency files and reports modernization risk without inventing CVEs.
 - Security Agent: performs deterministic pattern scans for hardcoded secrets, exposed actuator settings, plaintext HTTP integrations, wildcard CORS, disabled CSRF, debug mode, and SQL concatenation patterns.
