@@ -126,6 +126,9 @@ def _dark_theme_css_vars() -> str:
         --mai-expander-bg: rgba(23, 27, 34, 0.62);
         --mai-button-bg: #171b22;
         --mai-button-text: #f4f7fb;
+        --mai-upload-helper-text: #d9e3ee;
+        --mai-status-header-bg: #171b22;
+        --mai-status-header-text: #f4f7fb;
     """
 
 
@@ -186,6 +189,9 @@ st.markdown(
         --mai-expander-bg: rgba(255, 255, 255, 0.74);
         --mai-button-bg: #ffffff;
         --mai-button-text: #172033;
+        --mai-upload-helper-text: #344154;
+        --mai-status-header-bg: #ffffff;
+        --mai-status-header-text: #172033;
     }
 
     __MAI_THEME_OVERRIDE__
@@ -885,10 +891,81 @@ st.markdown(
         border-radius: 8px;
     }
 
+    div[data-testid="stExpander"] details {
+        border-color: var(--mai-line) !important;
+        background: var(--mai-panel) !important;
+    }
+
+    div[data-testid="stExpander"] summary {
+        background: var(--mai-status-header-bg) !important;
+        color: var(--mai-status-header-text) !important;
+    }
+
+    div[data-testid="stExpander"] summary:hover,
+    div[data-testid="stExpander"] summary:focus-visible {
+        background: var(--mai-status-header-bg) !important;
+    }
+
+    div[data-testid="stExpander"] summary *,
+    div[data-testid="stExpander"] summary p,
+    div[data-testid="stExpander"] summary span,
+    div[data-testid="stExpander"] summary svg {
+        color: var(--mai-status-header-text) !important;
+        fill: currentColor !important;
+        stroke: currentColor !important;
+    }
+
+    div[data-testid="stExpanderDetails"] {
+        border-top-color: var(--mai-line) !important;
+        background: var(--mai-panel) !important;
+        color: var(--mai-text) !important;
+    }
+
+    div[data-testid="stExpanderDetails"] [data-testid="stMarkdownContainer"],
+    div[data-testid="stExpanderDetails"] [data-testid="stMarkdownContainer"] p {
+        color: var(--mai-text) !important;
+    }
+
     div[data-testid="stFileUploader"] section {
         border-radius: 8px;
         border-color: var(--mai-info-line) !important;
         background: var(--mai-info-bg) !important;
+    }
+
+    div[data-testid="stFileUploader"] section p,
+    div[data-testid="stFileUploader"] section span,
+    div[data-testid="stFileUploader"] section small {
+        color: var(--mai-upload-helper-text) !important;
+    }
+
+    div[data-testid="stFileUploader"] section button,
+    div[data-testid="stFileUploader"] section button * {
+        color: #f4f7fb !important;
+        fill: currentColor !important;
+    }
+
+    div[data-testid="stStatusWidget"] {
+        border-color: var(--mai-line) !important;
+        background: var(--mai-panel) !important;
+        color: var(--mai-text) !important;
+    }
+
+    div[data-testid="stStatusWidget"] > div:first-child {
+        background: var(--mai-status-header-bg) !important;
+        color: var(--mai-status-header-text) !important;
+    }
+
+    div[data-testid="stStatusWidget"] > div:first-child *,
+    div[data-testid="stStatusWidget"] > div:first-child p,
+    div[data-testid="stStatusWidget"] > div:first-child span {
+        color: var(--mai-status-header-text) !important;
+        fill: currentColor !important;
+        stroke: currentColor !important;
+    }
+
+    div[data-testid="stStatusWidget"] [data-testid="stMarkdownContainer"],
+    div[data-testid="stStatusWidget"] [data-testid="stMarkdownContainer"] p {
+        color: var(--mai-text) !important;
     }
 
     button[data-baseweb="tab"] {
