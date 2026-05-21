@@ -4,6 +4,8 @@ ModernizeAI is a multi-agent legacy application modernization assistant. A user 
 
 The MVP performs static analysis only. It does not execute uploaded code, install dependencies, deploy applications, delete files, or perform migrations. All recommendations require human review.
 
+Recorded walkthrough: [Live Demo](https://drive.google.com/file/d/1YoyNk1DG_VS0L5P9ZkG4oXeqxwoDeHM8/view?usp=sharing)
+
 ## Architecture
 
 ```text
